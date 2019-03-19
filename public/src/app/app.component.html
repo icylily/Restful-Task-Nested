@@ -1,0 +1,35 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+<div style="text-align:center" class="header">
+  <h1>
+    {{ title }}!
+  </h1>
+</div>
+<div class="tasks">
+  <button (click)="getAllTasks()">Get all tasks</button>
+<div class="row mt-5">
+  <table class="table table-striped  table-hover table-bordered " *ngIf="tasks.length">
+    <tr class="text-center">
+      <th>Title</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let task of tasks">
+      <td>{{task.title}}</td>
+      <td>{{task.description}}</td>
+      <td>
+        <button (click)="getTaskById(task._id)">show</button>
+        <!-- <button (click)="deleteTask(task._id)">Delete!</button> -->
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+<!-- <div *ngIf="show_task" class="details ">
+  <h2>{{show_task.title}}</h2><br>
+  <h4>{{show_task.description}}</h4>
+</div> -->
+<!-- nested new component task to contain the details information   -->
+<app-task *ngIf="show_task" [taskToShow]="show_task"></app-task>
+</div>
+<router-outlet></router-outlet>
